@@ -14,7 +14,9 @@ void sort(struct Proc *P1,struct Proc *P2)
 }
 void main()
 {
-	int i,n,sum_wait=0,sum_ta = 0,sum=0,avg_wait,avg_ta,j,t=0;
+	float avg_wait=0,avg_ta=0;
+	int i,n,sum_wait=0,sum_ta = 0,sum=0,j,t=0;
+	
  	srand(time(0));
  	n=rand()%10+1;
  	for(i=0;i<n;i++)
@@ -36,10 +38,17 @@ void main()
     	sort(&P[j],&P[j+1]);
    	} 
  	P[0].waiting=0;
+ 	t=P[0].arrival;
  	for(i=1;i<n;i++)
  	{
  		t=t+P[i-1].burst;
  		P[i].waiting = t-P[i].arrival;
+ 		if(P[i].waiting<0)
+ 		{   
+ 			t=t+abs(P[i].waiting);
+ 			P[i].waiting=0;
+ 			
+ 		}
  	}
  
  	for(i=0;i<n;i++)
@@ -56,6 +65,7 @@ void main()
    		printf("\nP%d\t\t\t%d\t\t\t%d\t\t\t%d\t\t\t%d",P[i].id,P[i].arrival,P[i].burst,P[i].waiting,P[i].ta);
   	}
   	printf("\n");
+  	printf("%d%d",sum_wait,sum_ta);
   	printf("\nAverage waiting and turnaround time are %d %d ",avg_wait,avg_ta);
   	printf("\n");
 }
