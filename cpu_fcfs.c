@@ -57,16 +57,15 @@ void main()
   		P[i].ta=P[i].waiting+P[i].burst;
   		sum_ta+=P[i].ta;
   	}
-  	avg_wait=sum_wait/n;
-  	avg_ta = sum_ta/n;
+  	avg_wait=(float)sum_wait/n;
+  	avg_ta = (float)sum_ta/n;
   	printf("Process\t\t\tArrival time\t\tBurst time\t\tWaiting time\t\tTurnaround time\n");
   	for(i=0;i<n;i++)
   	{
    		printf("\nP%d\t\t\t%d\t\t\t%d\t\t\t%d\t\t\t%d",P[i].id,P[i].arrival,P[i].burst,P[i].waiting,P[i].ta);
   	}
-  	printf("\n");
-  	printf("%d%d",sum_wait,sum_ta);
-  	printf("\nAverage waiting and turnaround time are %d %d ",avg_wait,avg_ta);
+  	printf("\n");  
+  	printf("\nAverage waiting and turnaround time are %f %f",avg_wait,avg_ta);
   	printf("\n");
 }
  
