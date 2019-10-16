@@ -3,7 +3,7 @@
 #include<stdlib.h>
 struct Proc
 {
-int id,burst,waiting,ta,priority;
+int pid,burst,waiting,ta,priority;
 }P[10];
 
 void sort(struct Proc *P1,struct Proc *P2)
@@ -20,14 +20,14 @@ void main()
  	n=rand()%10+1;
  	for(i=0;i<n;i++)
  	{
-  		P[i].id=i+1;
+  		P[i].pid=i+1;
   		P[i].priority=rand()%10+1;
   		P[i].burst=rand()%10+1;
  	}
  	printf("No of processes %d ",n);
   	for(i=0;i<n;i++)
   	{
-   		printf("\nP%d\t%d\t%d",P[i].id,P[i].priority,P[i].burst);
+   		printf("\nP%d\t%d\t%d",P[i].pid,P[i].priority,P[i].burst);
   	}
   	printf("\n");
  	for(i=0;i<n-1;i++)
@@ -58,7 +58,7 @@ void main()
   	printf("Process\t\t\tBurst time\t\tWaiting time\t\tTurnaround time\n");
   	for(i=0;i<n;i++)
   	{
-   		printf("\nP%d\t\t\t%d\t\t\t%d\t\t\t%d",P[i].id,P[i].burst,P[i].waiting,P[i].ta);
+   		printf("\nP%d\t\t\t%d\t\t\t%d\t\t\t%d",P[i].pid,P[i].burst,P[i].waiting,P[i].ta);
   	}
   	printf("\n");  
   	printf("\nAverage waiting and turnaround time are %f %f",avg_wait,avg_ta);
